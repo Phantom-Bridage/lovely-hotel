@@ -1,4 +1,4 @@
-Lovely-Hotel :)
+Lovely-Hotel ;)
 ---
 
 _CI Study_
