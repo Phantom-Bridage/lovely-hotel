@@ -1,7 +1,7 @@
 #coding: utf-8
 
 import unittest
-import data.formatcheckresult as fcr
+import util.formatcheckresult as fcr
 
 
 class TestFormatCheckResult(unittest.TestCase):

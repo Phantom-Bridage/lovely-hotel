@@ -1,7 +1,7 @@
 #coding: utf-8
 
 import unittest
-import data.userinputfilter as uif
+import util.userinputfilter as uif
 
 
 class TestUserInputFilter(unittest.TestCase):

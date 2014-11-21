@@ -1,9 +1,7 @@
 #coding: utf-8
 
 import re
-import data.formatcheckresult as fcr
-
-from dataexception import DataException
+import util.formatcheckresult as fcr
 
 # re.match("[亜-熙ぁ-んァ-ヶ]+", "日本語の範囲")
 # re.match("[A-Za-z]+", "English")
