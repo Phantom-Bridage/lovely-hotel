@@ -25,7 +25,11 @@ def check_email(email):
     elif m.end() != len(email):
         result = fcr.FormatCheckResult(result = False, index = m.end(), comment = "Wrong email format")
     else:
-        result = fcr.FormatCheckResult(result = True, index = 0, comment = "")
+        m = re.search("\.\.|\.@", email)
+        if m is None:
+            result = fcr.FormatCheckResult(result = True, index = 0, comment = "")
+        else:
+            result = fcr.FormatCheckResult(result = False, index = m.start(), comment = "Wrong email format. Cannnot use '..' or '.@'.")
     return result
 
 def check_name(name):

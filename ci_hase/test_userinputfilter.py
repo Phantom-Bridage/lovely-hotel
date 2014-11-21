@@ -38,6 +38,12 @@ class TestUserInputFilter(unittest.TestCase):
         result = uif.check_email("unagi@nullnull.coむ")
         self.assertFalse(result.get_result())
 
+    def test_detect_include_taboo_string_in_email(self):
+        result = uif.check_email("unagi.@nullnull.com")
+        self.assertFalse(result.get_result())
+        result = uif.check_email("unagi@nullnull..com")
+        self.assertFalse(result.get_result())
+
 
     def test_decide_correct_name_format(self):
         result = uif.check_name("Rin Hoshizora")
