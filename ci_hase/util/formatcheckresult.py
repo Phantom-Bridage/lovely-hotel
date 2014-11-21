@@ -3,7 +3,7 @@
 class FormatCheckResult(object):
     def __init__(self, result, index, comment):
         self.__result = result
-        if index < 0:
+        if self.__result == False and index < 0:
             raise IndexError("index is negative value")
         self.__index = index
         self.__comment = comment
