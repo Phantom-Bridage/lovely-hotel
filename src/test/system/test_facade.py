@@ -5,7 +5,11 @@ import unittest
 
 class WhenCreatingFacade(unittest.TestCase):
     def setUp(self):
-        pass
+        self.primary_key = 1
+        customer = u'高坂 穂乃果,honoka@lovelive,音ノ木坂学院,'
+        plan = u'プラン1,5000,2,シングル,なし,'
+        reservation = u'14/11/23,15:00,14/11/24'
+        self.expected = str(self.primary_key) + ',' + customer + plan + reservation
 
 
     def _get_target_class(self):
@@ -16,17 +20,14 @@ class WhenCreatingFacade(unittest.TestCase):
     def _get_target_instance(self):
         return self._get_target_class()()
 
+    # check 予約番号をもとに、予約情報のパケットを返す
     def test_that_should_be_packet_when_make_an_inquiry_into_reservation_records(self):
-        primary_key = 1
-        customer = 'knskw,knskw@nullnull.com,檸檬根井都武者返市愛宿町4-2-3 エレガンスウェストポーチ999号室,'
-        plan = 'すこやかパック,4500,1,だんぼーる,みかん,'
-        reservation = '14/11/14/Fri,15,14/11/15/Sat'
-        expected = str(primary_key) + ',' + customer + plan + reservation
-        actual = self._get_target_instance().inquiry(primary_key)
-        assert_that(actual, is_(expected))
+        actual = self._get_target_instance().inquiry(1)
+        assert_that(actual, is_(self.expected))
 
-    def test_that_should_raise_type_error_when_given_non_number(self):
-        assert_that(calling(self._get_target_instance().inquiry).with_args("11"), TypeError)
+    # check 予約番号がint型でない時に型エラーを投げる
+    def test_that_should_raise_type_error_when_non_integer_number(self):
+        assert_that(calling(self._get_target_instance().inquiry).with_args("1"), TypeError)
 
 
 if __name__ == "__main__":

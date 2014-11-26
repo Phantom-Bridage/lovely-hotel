@@ -1,10 +1,14 @@
 # coding: utf-8
 
 from system.dummy import DummyDateBaseAgent
-import numbers
+from system.db_manager import DataBaseManager
 
 
 class Facade:
+    def __init__(self):
+        pass
+
+    """
     # 新規予約
     @classmethod
     def reserve(cls, reservation_set):
@@ -24,23 +28,19 @@ class Facade:
     @classmethod
     def search(cls, plan_name):
         return DummyDateBaseAgent.check(plan_name)
-
+    """
     # 照会
-    @classmethod
-    def inquiry(cls, reserve_number):
-        if not isinstance(reserve_number, numbers.Number):
-            raise TypeError
+    def inquiry(self, reserve_number):
+        if not isinstance(reserve_number, int):
+            raise TypeError("arg. should be Integer")
 
-        sql = DummyDateBaseAgent.query(reserve_number)
-        packet = ",".join(map(str, sql))
+        dbm = DataBaseManager()
+        sql = dbm.verify_reservation(reserve_number)
+        # sql = DummyDateBaseAgent.query(reserve_number)
+        packet = ",".join(map(unicode, sql))
         return packet
 
 
 if __name__ == "__main__":
-    s = Facade.search("BNS")
-    Facade.reserve("新規予約情報")
-    i = Facade.inquiry(22)
-    Facade.alter(22, "変更後の予約情報")
-    Facade.delete(22)
-    print s
-    print i
+    f = Facade()
+    print f.inquiry(1)

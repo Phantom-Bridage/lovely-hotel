@@ -26,23 +26,23 @@ class DummyDateBaseAgent:
     @classmethod
     def query(cls, reservation_number):
         # 予約情報モデル
-        check_in = "14/11/14/Fri"
-        check_in_time = 15
-        check_out = "14/11/15/Sat"
+        check_in = u'14/11/23'
+        check_in_time = u'15:00'
+        check_out = u'14/11/24'
         reservation = (check_in, check_in_time, check_out)
 
         # 顧客モデル
-        name = "knskw"
-        mail = "knskw@nullnull.com"
-        address = "檸檬根井都武者返市愛宿町4-2-3 エレガンスウェストポーチ999号室"
+        name = u'高坂 穂乃果'
+        mail = u'honoka@lovelive'
+        address = u'音ノ木坂学院'
         customer = (name, mail, address)
 
         # 宿泊プランモデル
-        plan_name = "すこやかパック"
-        price = 4500
-        rooms = 1
-        bed_type = "だんぼーる"
-        option = "みかん"
+        plan_name = u'プラン1'
+        price = 5000
+        rooms = 2
+        bed_type = u'シングル'
+        option = u'なし'
         plan = (plan_name, price, rooms, bed_type, option)
 
         sql_tuple = (reservation_number,) + customer + plan + reservation
