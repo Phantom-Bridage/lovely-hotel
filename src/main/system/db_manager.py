@@ -50,7 +50,7 @@ class DataBaseManager:
 		"""
 
         try:
-            # fix-me 相対パスの問題どうにかして！@knskw
+            # FIX-ME 相対パスの問題どうにかして！@knskw
             connect = sqlite3.connect('../res/lovely.db')
             cursor = connect.execute(query, {'reservation_id': reservation_id, })
             data = cursor.fetchone()

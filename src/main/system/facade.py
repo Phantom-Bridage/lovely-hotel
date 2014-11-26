@@ -34,9 +34,9 @@ class Facade:
         if not isinstance(reserve_number, int):
             raise TypeError("arg. should be Integer")
 
-        dbm = DataBaseManager()
-        sql = dbm.verify_reservation(reserve_number)
-        # sql = DummyDateBaseAgent.query(reserve_number)
+        # dbm = DataBaseManager()
+        # sql = dbm.verify_reservation(reserve_number)
+        sql = DummyDateBaseAgent.query(reserve_number)
         packet = ",".join(map(unicode, sql))
         return packet
 
